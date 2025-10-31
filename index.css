@@ -1,0 +1,475 @@
+/* ======================= EECS 493 Assignment 3 Starter Code ======================= */
+
+/* Main Containers */
+body,
+button {
+  font-family: VT323;
+}
+
+button {
+  font-size: xx-large;
+}
+
+.outer-container {
+  height: 720px;
+  width: 1280px;
+  background: #eee;
+  border: 5px solid gainsboro;
+}
+
+.game-window {
+  height: 720px;
+  width: 1280px;
+  float: left;
+  position: relative;
+}
+
+/* Game Section */ 
+#actual-game {
+  height: 720px;
+  width: 1280px;
+  background-color: white;
+  z-index: 10;
+  right: 0px;
+  top: 0px;
+  font-size: 75px;
+}
+
+#greeting {
+  display: none;
+}
+
+#instructions {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  gap: 30px;
+  
+}
+
+.instr {
+  font-size: 50px;
+}
+
+.asteroidSection {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#game_right_section {
+  display: none;
+  position:absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 250px;
+  text-align: center;
+}
+
+#pause {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  z-index: 9999;
+  
+}
+
+#pause img {
+  width: 40px;
+  height: 40px;
+}
+
+#paused-menu {
+  display: none;
+}
+
+#restarting {
+  display: none;
+  position: absolute;
+  color: white;
+  font-size: 25px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999999;
+}
+
+#restart-container {
+  display: none;
+}
+
+#restartQ {
+  background-color: gainsboro;
+  color: black;
+  width: 400px;
+  height: 150px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  z-index: 999999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+  gap: 70px;
+  padding-top: 10px;
+}
+
+#answers {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+#restartQ button{
+  width: 120px;
+  font-size: 25px;
+}
+
+#paused-contents {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 60px;
+  width: 300px;
+  height: 450px;
+  background-color: gainsboro;
+  color: black;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+}
+
+#paused-contents button {
+   background-color: #eee;
+   border-width: 1px;
+}
+
+#paused-buttons {
+  display:inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+#resume-button {
+  width: 100%;
+  padding: 20px;
+}
+
+#row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+#paused-contents img {
+  padding: 20px;
+  width: 150px;
+  height: 150px;
+}
+
+#dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 720px;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 99999;
+  display: none;
+
+}
+#scoreHeader, #danger, #level {
+  font-size: 50px;
+  color: black;
+}
+
+#scoreNum, #dangerNum, #levelNum {
+  font-size: 40px;
+  color: blue;
+}
+
+.curAsteroid {
+  position: absolute;
+  height: 42px;
+  width: 42px;
+  z-index: 9;
+  right: 0px;
+  top: 0px;
+}
+
+.curAsteroid img {
+  position: relative;
+  z-index: 10;
+  height: 80px;
+  left: -17px;
+  top: -15px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+
+#rocket {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 360px;
+  left: 640px;
+
+}
+
+#rocket img {
+  width: 100%;
+  height: 100%;
+}
+
+#portal {
+  display: none;
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  z-index: 10;
+}
+
+#portal img {
+  width: 100%;
+  height: 100%; 
+}
+
+#shield {
+  display: none;
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  z-index: 10;
+}
+
+#shield img{
+  width: 100%;
+  height: 100%;
+}
+
+#game-over-page {
+  display: none;
+}
+
+#game-over-text {
+  padding-top: 30px;
+  padding-bottom: 50px;
+  width: 550px;
+  height: 150px;
+  background-color: darkslateblue;;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: large;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 30px;
+}
+
+
+/* Add your stylings here */
+
+/* ASSIGNMENT 2 STYLES BEGIN */
+
+#landing-header {
+height: 100px;
+background-color: darkslateblue;
+border-bottom: 6px groove;
+font-size: 100px;
+color: white;
+display: flex;
+justify-content: space-between;
+
+}
+
+#landing-header img {
+  height: 100%;
+}
+
+#landing-page {
+  text-align: center;
+  background-image: url('../src/frontpage_background.jpg');
+  height: 100%;
+ 
+}
+
+#landing-page button {
+  margin-top: 100px;
+  width: 200px;
+  height: 100px;
+  background-color: darkslateblue;
+  color: white;
+
+}
+
+#settings-pop-up {
+  display: none;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 1;
+  text-align: center;
+  width: 600px; 
+  height: 690px;
+  background-color: darkslateblue;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 6px groove;
+}
+
+/*use margin*/
+
+.slider-box {
+  width: 100%;
+  margin-top: 125px;
+}
+
+.slider {
+  -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+
+#demo {
+  font-weight: normal;
+}
+
+.difficult {
+  margin-top: 90px;
+}
+
+#button-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+#button-options button {
+  background-color: purple;
+  width: 180px;
+  height: 100px;
+  color: white;
+
+}
+
+.selected {
+  border: 4px solid yellow;
+}
+
+
+#close-button {
+  background-color: purple;
+  width: 180px;
+  height: 100px;
+  color: white;
+  margin-top: 83px;
+}
+
+
+
+#tutorial-page {
+  display: none;
+  height: 720px;  /*same as outer container*/
+  width: 1280px;
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: gainsboro;
+  text-align: center;
+  border: 6px groove;
+  font-size: 50px;
+  flex-direction: column;
+  
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+}
+
+#tutorial-page > div {
+  margin-top: 25px;
+}
+
+#tutorial-page img {
+  width: 100px;
+  margin-top: 10px;
+}
+
+#play-header {
+  font-size: 75px;
+  font-weight: bold;
+}
+
+#tutorial-page .bold {
+  font-weight: bold;
+}
+
+#tutorial-page .italics {
+  font-style: italic;
+}
+
+#tutorial-page button {
+  width: 200px;
+  height: 75px;
+  background-color: gainsboro;
+}
+
+/* A2 STYLES END */
